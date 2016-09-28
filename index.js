@@ -14,13 +14,13 @@ var textmono = require('./data/textmono');
 // Replace all occurences of `search` by `replacement` within the string
 // Its use RegExp because `g` flag is not supported in Node
 // Moreover, it has to escape the reserved char of `search` 
-String.prototype.replaceAll = function(search, replacement) {
+function replaceAll(search, replacement) {
   search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return this.replace(new RegExp(search, 'g'), replacement);
 }
 
 // Insert `str` anywhere in the string
-String.prototype.insert = function (index, str) {
+function insert(index, str) {
   if (index <= 0) return str + this;
   var stringLeft = this.substring(0, index);
   var stringRight = this.substring(index, this.length);
@@ -30,7 +30,7 @@ String.prototype.insert = function (index, str) {
 // Replace some latex symbols with their alias equivalent
 function convertAliases(str) {
   for (var i = 0; i < aliases.length; i++) {
-    str = str.replaceAll(aliases[i][0], aliases[i][1]);
+    str = replaceAll.call(str,aliases[i][0], aliases[i][1]);
   }
   return str;
 }
@@ -39,7 +39,7 @@ function convertAliases(str) {
 // their unicode representation.
 function convertLatexSymbols(str) {
   for (var i = 0; i < symbols.length; i++) {
-    str = str.replaceAll(symbols[i][0], symbols[i][1]);
+    str = replaceAll.call(str, symbols[i][0], symbols[i][1]);
   }
   return str;
 }
@@ -48,7 +48,7 @@ function convertLatexSymbols(str) {
 // This will search for the ^ signs and replace the next
 // digit or (digits when {} is used) with its/their uppercase representation
 function applyModifier(text, modifier, D) {
-  text = text.replaceAll(modifier, '^');
+  text = replaceAll.call(text, modifier, '^');
   var newtext = '';
   var modeNormal = 0;
   var modeModified = 1;
@@ -226,7 +226,7 @@ function convertAccents(str) {
       var idx = str.indexOf(key);
       var parsed = parseBracket(str, idx + key.length, '{}');
       var converted = convertAccents(parsed[0] !== '' ? parsed[0] : ' ');
-      converted = converted.insert(Math.round(converted.length / 2.0), value);
+      converted = insert.call(converted, Math.round(converted.length / 2.0), value);
       converted = JSON.parse('"' + converted + '"');
       var subLeft = str.substring(0, idx);
       var subRight = str.substring(idx + key.length + parsed[1]);
