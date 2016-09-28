@@ -56,10 +56,10 @@ describe('latex-to-unicode', function() {
       expect(unicode).to.equal('𝔹ℂ𝔻');
     });
 
-    it('should use char if modified char does not exist', function() {
-      var latex = '\\frak@';
+    it('should only consume modifier if modified char exists', function() {
+      var latex = "^5 \\frak@ \\frakk";
       var unicode = latexToUnicode(latex);
-      expect(unicode).to.equal('@');
+      expect(unicode).to.equal("⁵ \\frak@ 𝔨");
     });
 
     it('should being able to apply multiple modifiers', function() {
@@ -93,11 +93,17 @@ describe('latex-to-unicode', function() {
       var unicode = latexToUnicode(latex);
       expect(unicode).to.equal('½');
     });
-
-    it('should fall back to conventional notation for complicated fractions', function() {
+    
+    it('should use fraction slash for numerical fractions', function() {
       var latex = '\\frac{15}{100}';
       var unicode = latexToUnicode(latex);
-      expect(unicode).to.equal('(15 / 100)');
+      expect(unicode).to.equal('‌15⁄100‌');
+    });
+
+    it('should fall back to conventional notation for complicated fractions', function() {
+      var latex = '\\frac{15a}{100}';
+      var unicode = latexToUnicode(latex);
+      expect(unicode).to.equal('(15a / 100)');
     });
 
     it('should accept others LaTeX symbols', function() {
@@ -181,7 +187,7 @@ describe('latex-to-unicode', function() {
 
   describe('convert', function() {
     it('should correctly convert quadratic formula', function() {
-      var latex = '\\itx = \\frac{-\\itb \\pm \\sqrt{\\itb^2 - \\it{4ac}}}{\\it{2a}}';
+      var latex = '\\itx = \\frac{-\\itb \\pm \\sqrt{\\itb^2 - 4\\it{ac}}}{2\\it{a}}';
       var unicode = latexToUnicode(latex);
       expect(unicode).to.equal('𝑥 = ((-𝑏 ± √(𝑏² - 4𝑎𝑐)) / (2𝑎))');
     });

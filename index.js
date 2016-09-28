@@ -48,7 +48,7 @@ function convertLatexSymbols(str) {
 // This will search for the ^ signs and replace the next
 // digit or (digits when {} is used) with its/their uppercase representation
 function applyModifier(text, modifier, D) {
-  text = replaceAll.call(text, modifier, '^');
+  //text = replaceAll.call(text, modifier, '^');
   var newtext = '';
   var modeNormal = 0;
   var modeModified = 1;
@@ -56,31 +56,66 @@ function applyModifier(text, modifier, D) {
 
   var mode = modeNormal;
   var ch;
-
-  for (var i = 0; i < text.length; i++) {
-    ch = text[i];
-    if (mode == modeNormal && ch == '^') {
-      mode = modeModified;
-      continue;
-    } else if (mode == modeModified && ch == '{') {
-      mode = modeLong;
-      continue;
-    } else if (mode == modeModified) {
-      newtext += D[ch] !== undefined ? D[ch] : ch;
-      mode = modeNormal;
-      continue;
-    } else if (mode == modeLong && ch == '}') {
-      mode = modeNormal;
+  
+  
+  let slices = []
+  
+  outer: for(let offset=0;offset<text.length;) {
+    let next = text.indexOf(modifier, offset)
+    if(next == -1) {
+       slices.push(text.substring(offset))
+      break;
+    }
+    
+    if(next > offset) {
+      slices.push(text.substring(offset,next))
+    }
+    
+    offset = next + modifier.length;
+    
+    let char = text[offset] 
+    
+    if(char && D[char]) {
+      slices.push(D[char])
+      offset++;
       continue;
     }
+    
+    let re = /{([^}]+?)}/g;
+    re.lastIndex = offset;
+    let match = re.exec(text);
+    
+    if(match) {
+      let group = match[1];
+      let subslices = [];
 
-    if (mode == modeNormal) {
-      newtext += ch;
-    } else {
-      newtext += D[ch] !== undefined ? D[ch] : ch;
+      for(let i=0;i<group.length;i++) {
+        let groupChar = group[i];
+        let replacement = D[groupChar];
+        if(!replacement) {
+          // failed to transform contents of a bracketed expression
+          // -> retain the whole thing verbatim
+          slices.push(modifier)
+          slices.push(match[0])
+          offset = re.lastIndex;
+          continue outer;
+        }
+        
+        subslices.push(replacement);
+      }
+          
+      slices.push(...subslices);
+      offset = re.lastIndex;
+      continue;
     }
+    
+    // failed to replace, retain modifier
+    slices.push(modifier)
+      
   }
-  return newtext;
+  
+  return slices.join("");
+  
 }
 
 // Apply all of the modifiers
@@ -130,6 +165,8 @@ function addParenthesis(str) {
   return '(' + str + ')';
 }
 
+const zwnj = "\u200C";
+
 // Convert fractions (\frac{a}{b})
 function convertFrac(str) {
   var key = '\\frac';
@@ -156,6 +193,11 @@ function convertFrac(str) {
     if (n == '5' && d == '6') frac = '⅚';
     if (n == '5' && d == '8') frac = '⅝';
     if (n == '7' && d == '8') frac = '⅞';
+    
+    if(frac === '' && /^[0-9]*$/.test(n) && /^[0-9]*$/.test(d)) {
+      // exploit font layout engine support for FRACTION SLASH + arabic numerals
+      frac = zwnj+n+"⁄"+d+zwnj;
+    }
 
     if (frac === '') {
       n = addParenthesis(n);
