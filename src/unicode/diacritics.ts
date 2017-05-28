@@ -17,10 +17,14 @@ import {slashed} from "./accents/slashed";
  * For example, \`o → ò
  */
 export const diacritics = {
-    "`": graveAccent, //{o}	ò	grave accent
     "grave": acuteAccent, //{o}	ò	grave accent
-    "'": acuteAccent, // Acute accent
     "acute": acuteAccent, // Acute accent
+    "mathring": ringOverLetter, //{a}	å	ring over the letter (for å there is also the special command \aa)
+    "breve": simpleModifier("\u0306"), //{o}	ŏ	breve over the letter
+    "check": caron, //{s}	š	caron/háček ("v") over the letter
+
+    "`": graveAccent, //{o}	ò	grave accent
+    "'": acuteAccent, // Acute accent
     "^": circumflex, //{o}	ô	circumflex
     "~": tilde, //{o}	õ	tilde
     "=": simpleModifier("\u0304"), //{o}	ō	macron accent (a bar over the letter)
@@ -34,15 +38,13 @@ export const diacritics = {
     "d": simpleModifier("\u0323"), //{u}	ụ	dot under the letter
 
     "r": ringOverLetter, //{a}	å	ring over the letter (for å there is also the special command \aa)
-    "mathring": ringOverLetter, //{a}	å	ring over the letter (for å there is also the special command \aa)
 
     "u": simpleModifier("\u0306"), //{o}	ŏ	breve over the letter
-    "breve": simpleModifier("\u0306"), //{o}	ŏ	breve over the letter
 
     "v": caron, //{s}	š	caron/háček ("v") over the letter
-    "check": caron, //{s}	š	caron/háček ("v") over the letter
 
     "t": tieLetters, //{oo}	o͡o	"tie" (inverted u) over the two letters
+
     "a": circledA,
     "o": slashed //	ø	slashed o (o with stroke)
 };
