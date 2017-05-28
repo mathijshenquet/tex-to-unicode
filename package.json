@@ -1,12 +1,12 @@
 {
-  "name": "latex-to-unicode",
-  "version": "0.1.0",
-  "description": "Convert LaTeX strings to unicode.",
+  "name": "tex-to-unicode",
+  "version": "0.0.0",
+  "description": "Convert TeX / LaTeX strings to Unicode and HTML.",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/jmeas/latex-to-unicode.js.git"
+    "url": "git@github.com:digitalheir/tex-to-unicode.git"
   },
   "keywords": [
     "latex",

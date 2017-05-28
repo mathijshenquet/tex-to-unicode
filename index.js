@@ -1,5 +1,5 @@
 // Load all of our data
-var accents = require('./data/accents');
+var accents = require('./src/unicode/accents');
 var aliases = require('./data/aliases');
 var subscripts = require('./data/subscripts');
 var superscripts = require('./data/superscripts');
