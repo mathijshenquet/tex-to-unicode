@@ -1,12 +1,5 @@
 export const unicodeSupportedCommands = Object.assign({}, diacritics);
 
-export const supportedMarkups = {
-  "txt": true,
-  // "md": true,
-  "html": true
-};
-
-type SupportedMarkup = keyof typeof supportedMarkups;
 
 export function apply(
   command: string,
