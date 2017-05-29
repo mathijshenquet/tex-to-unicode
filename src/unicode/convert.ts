@@ -1,6 +1,17 @@
 export const unicodeSupportedCommands = Object.assign({}, diacritics);
 
 
+export function commandToCharacter(command: string): string {
+  if(isCharacterCommand(command)) {
+    return commandToCharacter[command];
+  } else if(isSpaceCommand(command)) {
+    return spaces[command];
+  } else {
+    throw unknownCommandError(command);
+  }
+}
+
+
 export function apply(
   command: string,
   parameters: string[],
