@@ -1,7 +1,7 @@
 import "mocha";
-import * as assert from "assert";
-import {isSpecializableChar} from "../src/special-characters/special-character-handlers";
-import {convertSpecialCharacterToUnicode, processSpecialCharacters} from "../src/special-characters/special-characters";
+
+import {expect} from "chai";
+import {convertCommand} from "../src/convert";
 
 const equals = assert.equal;
 
@@ -13,19 +13,19 @@ describe("quoted friends", () => {
 
 describe("special characters", () => {
     it("specializableChars", function () {
-        equals(convertSpecialCharacterToUnicode("\\i"), "ı");
-        equals(convertSpecialCharacterToUnicode("\\j"), "ȷ");
-        equals(convertSpecialCharacterToUnicode("\\oe"), "œ");
-        equals(convertSpecialCharacterToUnicode("\\OE"), "Œ");
-        equals(convertSpecialCharacterToUnicode("\\ae"), "æ");
-        equals(convertSpecialCharacterToUnicode("\\AE"), "Æ");
-        equals(convertSpecialCharacterToUnicode("\\aa"), "å");
-        equals(convertSpecialCharacterToUnicode("\\AA"), "Å");
-        equals(convertSpecialCharacterToUnicode("\\o"), "ø");
-        equals(convertSpecialCharacterToUnicode("\\O"), "Ø");
-        equals(convertSpecialCharacterToUnicode("\\ss"), "ß");
-        equals(convertSpecialCharacterToUnicode("\\l"), "ł");
-        equals(convertSpecialCharacterToUnicode("\\L"), "Ł");
+        equals(convertCommand("i"), "ı");
+        equals(convertCommand("j"), "ȷ");
+        equals(convertCommand("oe"), "œ");
+        equals(convertCommand("OE"), "Œ");
+        equals(convertCommand("ae"), "æ");
+        equals(convertCommand("AE"), "Æ");
+        equals(convertCommand("aa"), "å");
+        equals(convertCommand("AA"), "Å");
+        equals(convertCommand("o"), "ø");
+        equals(convertCommand("O"), "Ø");
+        equals(convertCommand("ss"), "ß");
+        equals(convertCommand("l"), "ł");
+        equals(convertCommand("L"), "Ł");
 
         assert.throws(convertSpecialCharacterToUnicode.bind(null, "\\s"), Error);
     });

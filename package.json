@@ -10,16 +10,28 @@
   },
   "keywords": [
     "latex",
+    "tex",
     "unicode",
+    "html",
     "strings",
     "string",
     "convert",
+    "translate",
+    "translation",
     "conversion"
   ],
-  "author": "Jmeas",
+  "author": "Maarten Trompper",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jmeas/latex-to-unicode.js/issues"
   },
-  "homepage": "https://github.com/jmeas/latex-to-unicode.js"
+  "homepage": "https://github.com/jmeas/latex-to-unicode.js",
+  "devDependencies": {
+    "@types/chai": "^3.5.2",
+    "@types/mocha": "^2.2.41",
+    "chai": "^4.0.0",
+    "mocha": "^3.4.2",
+    "typescript": "^2.3.3",
+    "webpack": "^2.6.1"
+  }
 }
