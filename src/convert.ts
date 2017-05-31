@@ -1,8 +1,6 @@
 import {CommandOptions} from "./options";
-export function convertCommand(command: string,
+export function convertCommand(command: Command,
                                options: CommandOptions = {
-                                   parameters: [],
-                                   optionalParameters: [],
                                    translateTo: "txt"
                                }): string {
     const {translateTo} = options;

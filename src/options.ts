@@ -7,7 +7,5 @@ export const supportedMarkups = {
 type SupportedMarkup = keyof typeof supportedMarkups;
 
 export interface CommandOptions {
-    parameters: string[];
-    optionalParameters: string[];
     translateTo: SupportedMarkup;
 }
