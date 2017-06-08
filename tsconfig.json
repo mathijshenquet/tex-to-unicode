@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "declaration": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "target": "es5",
+    "outDir": "ts-compile"
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+  ]
+}
