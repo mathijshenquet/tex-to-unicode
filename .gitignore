@@ -1,7 +1,7 @@
-# Logs
-logs
-*.log
+/package-lock.json
 .idea/
+*.iml
+
 # Runtime data
 pids
 *.pid
@@ -16,13 +16,11 @@ coverage
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+# node-waf configuration
+.lock-wscript
+
+/dist/
 
 # Dependency directory
-# Commenting this out is preferred by some people, see
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
-node_modules
-
-# Users Environment Variables
-.lock-wscript
+# https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+/node_modules/

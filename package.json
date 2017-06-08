@@ -1,37 +1,27 @@
 {
-  "name": "tex-to-unicode",
-  "version": "0.0.0",
-  "description": "Convert TeX / LaTeX strings to Unicode and HTML.",
-  "main": "index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:digitalheir/tex-to-unicode.git"
+  "name": "text-to-unicode-demo",
+  "version": "1.0.0",
+  "description": "Browser demo for text-to-unicode",
+  "scripts": {
+    "build": "webpack -p"
   },
-  "keywords": [
-    "latex",
-    "tex",
-    "unicode",
-    "html",
-    "strings",
-    "string",
-    "convert",
-    "translate",
-    "translation",
-    "conversion"
-  ],
   "author": "Maarten Trompper",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jmeas/latex-to-unicode.js/issues"
-  },
-  "homepage": "https://github.com/jmeas/latex-to-unicode.js",
+  "license": "ISC",
   "devDependencies": {
-    "@types/chai": "^3.5.2",
-    "@types/mocha": "^2.2.41",
-    "chai": "^4.0.0",
-    "mocha": "^3.4.2",
-    "typescript": "^2.3.3",
+    "awesome-typescript-loader": "^3.1.3",
+    "copy-webpack-plugin": "^4.0.1",
+    "material-components-web": "^0.12.1",
+    "preact": "^8.1.0",
+    "preact-compat": "^3.16.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "tslint": "^5.4.3",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.3.4",
     "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "@types/react": "^15.0.27",
+    "@types/react-dom": "^15.5.0"
   }
 }
