@@ -22,8 +22,7 @@ export class TexTranslator extends React.PureComponent<TexProps, TexState> {
     render() {
         // rows="8"
         //                   cols={40}
-        return <section className="example">
-            <label htmlFor="tex-input">(La)TeX</label>
+        return <section className="input-fields">
             <div className="mdc-textfield mdc-textfield--multiline">
                 <textarea
                     className="mdc-textfield__input input"
