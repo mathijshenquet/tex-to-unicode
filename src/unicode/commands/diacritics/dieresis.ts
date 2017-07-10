@@ -1,5 +1,5 @@
-import {modifyStringFunction} from "../translate-string";
-export const dieresis = modifyStringFunction({
+import {lookupOrAppend} from "../command-expander";
+export const dieresis = lookupOrAppend({
     e: 'ë',
     y: 'ÿ',
     u: 'ü',

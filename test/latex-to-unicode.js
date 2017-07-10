@@ -1,6 +1,7 @@
 var expect = require('chai').expect;
 var latexToUnicode = require('../index.js');
 
+
 describe('latex-to-unicode', function() {
 
   describe('aliases', function () {

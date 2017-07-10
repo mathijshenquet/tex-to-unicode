@@ -1,6 +1,6 @@
-import {modifyStringFunction} from "../translate-string";
+import {lookupOrAppend} from "../command-expander";
 
-export const ringOverLetter = modifyStringFunction({
+export const ringOverLetter = lookupOrAppend({
     a: "å",
     A: "Å",
     y: "ẙ"

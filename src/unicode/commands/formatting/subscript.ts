@@ -1,5 +1,6 @@
 // todo subscript block? https://en.wikipedia.org/wiki/Superscripts_and_Subscripts
 
+import {lookupOrAppend} from "../command-expander";
 export const subscriptCharacters = {
   "0": "₀",
   "1": "₁",
@@ -21,18 +22,18 @@ export const subscriptCharacters = {
 
   "a": "ₐ",
   "e": "ₑ",
-  "h": ₕ,
+  "h": "ₕ",
   "i": "ᵢ",
-  "j": ⱼ,
-  k: ₖ,
-  l: ₗ,
-  m: ₘ,
-  n:ₙ,
+  "j":  "ⱼ",
+  k:  "ₖ",
+  l:  "ₗ",
+  m:  "ₘ",
+  n: "ₙ",
   "o": "ₒ",
-  p: ₚ,
+  p: "ₚ",
   "r": "ᵣ",
-  s: ₛ,
-  t: ₜ,
+  s: "ₛ",
+  t: "ₜ",
   "u": "ᵤ",
   "v": "ᵥ",
   "x": "ₓ",
@@ -54,11 +55,11 @@ export const subscriptCharacters = {
   "χ": "ᵪ"
   
   //
-}
+};
 
-const translateCharToSubstring = modifyStringFunction(subscriptCharacters);
+const translateCharToSubstring = lookupOrAppend(subscriptCharacters);
 
 export const subscript = function(s: string): string {
   return s.split("").map(char => translateCharToSubstring(char)).join("");
-}
+};
 

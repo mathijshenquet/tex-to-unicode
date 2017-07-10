@@ -1,16 +1,23 @@
-import {CommandOptions} from "./options";
-export function convertCommand(command: Command,
-                               options: CommandOptions = {
-                                   translateTo: "txt"
-                               }): string {
+import {CommandOptions, supportedMarkups} from "./options";
+import {LaTeX} from "latex-parser";
+
+export function convertLaTeX(options: CommandOptions = {
+                                 translateTo: "txt"
+                             },
+                             ...latex: LaTeX[]): string {
     const {translateTo} = options;
+
     switch (translateTo) {
         case "txt":
-
+            return
         case "html":
-        // TODO;
+
         default:
-            throw new Error("Unsupported format: '" + translateTo + "'. Use one of: " + Object.keys(supportedMarkups));
+            throw new Error("Unsupported format: '"
+                + translateTo
+                + "'. Use one of: "
+                + Object.keys(supportedMarkups)
+            );
     }
 }
 

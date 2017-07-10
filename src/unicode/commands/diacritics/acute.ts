@@ -1,5 +1,6 @@
-import {modifyStringFunction} from "../translate-string";
-export const acuteAccent = modifyStringFunction({
+import {lookupOrAppend} from "../command-expander";
+
+export const acuteAccent = lookupOrAppend({
     e: 'é',
     y: 'ý',
     u: 'ú',

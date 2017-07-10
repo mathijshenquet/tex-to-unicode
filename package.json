@@ -1,7 +1,7 @@
 {
   "name": "tex-to-unicode",
-  "version": "0.0.0",
-  "description": "Convert TeX / LaTeX strings to Unicode and HTML.",
+  "version": "0.8.0",
+  "description": "Convert LaTeX strings to Unicode and HTML.",
   "main": "index.js",
   "scripts": {},
   "repository": {
@@ -30,6 +30,7 @@
     "@types/chai": "^3.5.2",
     "@types/mocha": "^2.2.41",
     "chai": "^4.0.0",
+    "latex-parser": "^0.3.2",
     "mocha": "^3.4.2",
     "typescript": "^2.3.3",
     "webpack": "^2.6.1"

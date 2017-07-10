@@ -3,7 +3,6 @@ import "mocha";
 import {expect} from "chai";
 import {convertCommand} from "../src/convert";
 
-const equals = assert.equal;
 
 describe("quoted friends", () => {
     it("memes", function () {
@@ -13,21 +12,21 @@ describe("quoted friends", () => {
 
 describe("special characters", () => {
     it("specializableChars", function () {
-        equals(convertCommand("i"), "ı");
-        equals(convertCommand("j"), "ȷ");
-        equals(convertCommand("oe"), "œ");
-        equals(convertCommand("OE"), "Œ");
-        equals(convertCommand("ae"), "æ");
-        equals(convertCommand("AE"), "Æ");
-        equals(convertCommand("aa"), "å");
-        equals(convertCommand("AA"), "Å");
-        equals(convertCommand("o"), "ø");
-        equals(convertCommand("O"), "Ø");
-        equals(convertCommand("ss"), "ß");
-        equals(convertCommand("l"), "ł");
-        equals(convertCommand("L"), "Ł");
+        expect(convertCommand("i")).to.equal("ı");
+        expect(convertCommand("j")).to.equal("ȷ");
+        expect(convertCommand("oe")).to.equal("œ");
+        expect(convertCommand("OE")).to.equal("Œ");
+        expect(convertCommand("ae")).to.equal("æ");
+        expect(convertCommand("AE")).to.equal("Æ");
+        expect(convertCommand("aa")).to.equal("å");
+        expect(convertCommand("AA")).to.equal("Å");
+        expect(convertCommand("o")).to.equal("ø");
+        expect(convertCommand("O")).to.equal("Ø");
+        expect(convertCommand("ss")).to.equal("ß");
+        expect(convertCommand("l")).to.equal("ł");
+        expect(convertCommand("L")).to.equal("Ł");
 
-        assert.throws(convertSpecialCharacterToUnicode.bind(null, "\\s"), Error);
+        expect(convertCommand.bind(null, "\\s")).to.throw;
     });
 
     it("graveAccent", () => {
@@ -57,37 +56,37 @@ describe("special characters", () => {
     // it("tilde", () => {
     //     "~" //{o}	õ	tilde
     // });
-    // it("simpleModifier", () => {
+    // it("simpleSuffix", () => {
     //     "=" //{o}	ō	macron accent (a bar over the letter)
     // });
-    // it("simpleModifier", () => {
+    // it("simpleSuffix", () => {
     //     "." //{o}	ȯ	dot over the letter
     // });
     // it("dieresis", () => {
     //     "" //{o}	ö	umlaut, trema or dieresis
     // });
-    // it("simpleModifier", () => {
+    // it("simpleSuffix", () => {
     //     "H" //{o}	ő	long Hungarian umlaut (double acute)
     // });
     // it("cedilla", () => {
     //     "c" //{c}	ç	cedilla
     // });
-    // it("simpleModifier", () => {
+    // it("simpleSuffix", () => {
     //     "k" //{a}	ą	ogonek
     // });
     // it("barredLetter", () => {
     //     "l" //{}	ł	barred l (l with stroke)
     // });
-    // it("simpleModifier", () => {
+    // it("simpleSuffix", () => {
     //     "b" //{o}	o	bar under the letter
     // });
-    // it("simpleModifier", () => {
+    // it("simpleSuffix", () => {
     //     "d" //{u}	ụ	dot under the letter
     // });
     // it("ringOverLetter", () => {
     //     "r" //{a}	å	ring over the letter (for å there is also the special command \aa)
     // });
-    // it("simpleModifier", () => {
+    // it("simpleSuffix", () => {
     //     "u" //{o}	ŏ	breve over the letter
     // });
     // it("caron", () => {

@@ -40,7 +40,7 @@ export const spaceCharacters = {
 //\kern <len> inserts a skip of <len> (may be negative) in text or math mode (a plain TeX skip);
 //\hskip <len> (similar to \kern);
 //\hspace{<len>} inserts a space of length <len> (may be negative) in math or text mode (a LaTeX \hskip);
-//\hphantom{<stuff>} inserts space of length equivalent to <stuff> in math or text mode. Should be \protected when used in fragile commands (like \caption and sectional headings);
+//\hphantom{<stuff>} inserts space of length equivalent to <stuff> in math or text mode. Should be \protected when used in fragile command (like \caption and sectional headings);
 
 
 export type SpaceCommand = keyof typeof spaceCharacters;

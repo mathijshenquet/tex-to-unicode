@@ -1,6 +1,5 @@
-import {modifyStringFunction} from "../translate-string";
-export
-const graveAccent = modifyStringFunction({
+import {lookupOrAppend} from "../command-expander";
+export const graveAccent = lookupOrAppend({
     e: "è",
     u: "ù",
     i: "ì",
