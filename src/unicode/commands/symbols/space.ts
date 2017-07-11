@@ -6,21 +6,28 @@ export const mathSpace = "\u8287";
 /**
  * https://tex.stackexchange.com/a/74354/22604
  // TODO // ~ inserts an "unbreakable" space (similar to an HTML &nbsp;) (in text or math mode);
+ // TODO Math mode, generally...
  */
 export const spaceCharacters = {
     /** \, inserts a \thinspace (equivalent to .16667em) in text mode, or \thinmuskip (equivalent to 3mu) in math mode;
      https://en.wikipedia.org/wiki/Thin_space
      */
     ",": "\u2009",
-// \: is equivalent to \> (see above);
-// \enspace inserts a space of .5em in text or math mode;
+
+    // \: is equivalent to \> (see above);
+
+    // \enspace inserts a space of .5em in text or math mode;
+
     /**\quad inserts a space of 1em in text or math mode;*/
     "quad": "\u2003",
+
     /**\qquad inserts a space of 2em in text or math mode;*/
     "qquad": "\u2003\u2003",
+
     /**\  inserts what is called a "control space" (in text or math mode);*/
     " ": " ",
-    // inserts an inter-word space in text mode (and is gobbled in math mode). Similarly for \space and { }.
+
+    // inserts an inter-word space in text mode (/* TODO */and is gobbled in math mode). Similarly for \space and { }.
     "space": " ",
     ";": "　",
     ",": "　",
