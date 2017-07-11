@@ -1,12 +1,14 @@
 import {isTeXComm, LaTeX, TeXArg} from "latex-parser";
 import {CommandOptions} from "../options";
 import {unknownCommandError} from "../unknown-command";
-
-export const unicodeSupportedCommands = diacritics;
+import {isCharacterCommand, commandToCharacter} from "./commands/symbols/0arg/symbols";
+import {isSpaceCommand, spaceCharacters} from "./commands/symbols/0arg/space";
 
 
 /*
- * when TeX is looking for an argument to a macro defined with \newcommand, if it finds a left brace {, then the argument will be whatever is between this brace and the corresponding } (at the same level); otherwise the first token (character or control sequence) will be the argument.
+ * when TeX is looking for an argument to a macro defined with \newcommand, if it finds a left brace {, then the
+ * argument will be whatever is between this brace and the corresponding } (at the same level); otherwise the first
+ * token (character or control sequence) will be the argument.
  * */
 
 export interface ConversionResult {
@@ -23,26 +25,23 @@ export function convertLaTeX(options: CommandOptions = {
         tail: []
     };
 
-    if (isTeXComm(latex[0])) {
-        commandToCharacter(
-            latex.name,
-            latex.arguments
-        );
+    const l: LaTeX = latex[0];
+    if (isTeXComm(l)) {
+        const commandName = l.name;
+        if (isCharacterCommand(commandName)) {
+            return commandToCharacter[commandName];
+        } else if (isSpaceCommand(commandName)) {
+            return spaceCharacters[commandName];
+        } else {
+            throw unknownCommandError(commandName);
+        }
+
     } else {
         return latex.toString();
     }
 }
 
 
-export function commandToCharacter(command: string): string {
-    if (isCharacterCommand(command)) {
-        return commandToCharacter[command];
-    } else if (isSpaceCommand(command)) {
-        return spaceCharacters[command];
-    } else {
-        throw unknownCommandError(command);
-    }
-}
 
 
 export function apply(command: string,
