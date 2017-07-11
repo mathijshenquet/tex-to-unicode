@@ -63,4 +63,4 @@ export const blackboardCharacters = {
   "7": "𝟟",
   "8": "𝟠",
   "9": "𝟡"
-}
+};

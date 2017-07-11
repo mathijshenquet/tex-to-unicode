@@ -1,4 +1,4 @@
-import {lookupOrAppend} from "../command-expander";
+import {lookupOrAppend} from "../../command-expander";
 export const dieresis = lookupOrAppend({
     e: 'ë',
     y: 'ÿ',

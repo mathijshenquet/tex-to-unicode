@@ -1,4 +1,4 @@
-import {lookupOrAppend} from "../command-expander";
+import {lookupOrAppend} from "../../command-expander";
 export const circumflex = lookupOrAppend({
     e: 'ê',
     u: 'û',

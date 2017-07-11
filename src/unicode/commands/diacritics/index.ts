@@ -1,13 +1,13 @@
-import {circledA, ringOverLetter} from "./mathring";
-import {acuteAccent} from "./acute";
-import {graveAccent} from "./grave";
-import {circumflex} from "./circumflex";
-import {tilde} from "./tilde";
-import {dieresis} from "./dieresis";
-import {cedilla} from "./cedilla";
-import {barredLetter} from "./barred-letter";
-import {caron} from "./caron";
-import {slashed} from "./slashed";
+import {circledA, ringOverLetter} from "./1args/mathring";
+import {acuteAccent} from "./1args/acute";
+import {graveAccent} from "./1args/grave";
+import {circumflex} from "./1args/circumflex";
+import {tilde} from "./1args/tilde";
+import {dieresis} from "./1args/dieresis";
+import {cedilla} from "./1args/cedilla";
+import {barredLetter} from "./1args/barred-letter";
+import {caron} from "./1args/caron";
+import {slashed} from "./1args/slashed";
 
 import {tieLetters} from "../tie/tie-letters";
 import {simpleSuffix} from "../../../util";
