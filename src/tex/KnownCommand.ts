@@ -4,5 +4,5 @@ export interface KnownCommand {
   name: string,
   optionalArguments: number;
   argumentCount: number;
-  apply: (args: TeXArg[], cb: CommandCallback) => string;
+  apply: (cb: CommandCallback, ...args: TeXArg) => string;
 };
