@@ -1,10 +1,10 @@
-import {CommandToken} from "latex-parser";
-import {LatexMode} from "./LatexMode";
-import {IdentityNode} from "./tex/IdentityNode";
+import {TeXComm} from "latex-parser";
+
+export type LatexMode = "Text" | "Math";
 
 export interface ExpandContext {
     mode: LatexMode;
     onExpanderNotFound: CommandExpander;
 }
 
-export type CommandExpander = (command: CommandToken, context: ExpandContext) => IdentityNode;
+export type CommandExpander<T> = (command: TeXComm, context: ExpandContext) => T;
