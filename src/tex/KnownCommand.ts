@@ -6,3 +6,7 @@ export interface KnownCommand {
   argumentCount: number;
   apply: (cb: CommandCallback, optArgs: TexArg[], ...args: TeXArg) => string;
 };
+
+export function createCommandHandler(name: string, optionalArguments: number, argumentCount: number, apply: (cb: CommandCallback, optArgs: TexArg[], ...args: TeXArg) => string) {
+  return {name, optionalArguments, argumentCount, apply};
+}
